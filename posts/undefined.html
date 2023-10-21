@@ -1,0 +1,433 @@
+<!DOCTYPE html><html lang="en" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>Python Basics Data Types: Lists, Tuples and Sets | Magnicord</title><meta name="author" content="Magnicord"><meta name="copyright" content="Magnicord"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="ffffff"><meta name="description" content="This note is compiled based on Corey Schafer’s Python Tutorial. And it mainly focuses on summarizing knowledge.  Lists List is a collection which is:  ordered changeable  Creating Lists We use square">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Python Basics Data Types: Lists, Tuples and Sets">
+<meta property="og:url" content="https://magnicord.github.io/posts/undefined.html">
+<meta property="og:site_name" content="Magnicord">
+<meta property="og:description" content="This note is compiled based on Corey Schafer’s Python Tutorial. And it mainly focuses on summarizing knowledge.  Lists List is a collection which is:  ordered changeable  Creating Lists We use square">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://i.loli.net/2021/02/24/5O1day2nriDzjSu.png">
+<meta property="article:published_time" content="2023-10-21T07:49:59.000Z">
+<meta property="article:modified_time" content="2023-10-21T07:54:22.515Z">
+<meta property="article:author" content="Magnicord">
+<meta property="article:tag" content="notes">
+<meta property="article:tag" content="Python">
+<meta property="article:tag" content="data structure">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://i.loli.net/2021/02/24/5O1day2nriDzjSu.png"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="https://magnicord.github.io/posts/undefined.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: 'Copy Successful',
+    error: 'Copy Error',
+    noSupport: 'Browser Not Supported'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: 'days',
+  dateSuffix: {
+    just: 'Just now',
+    min: 'minutes ago',
+    hour: 'hours ago',
+    day: 'days ago',
+    month: 'months ago'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid/dist/infinitegrid.min.js',
+    buttonText: 'Load More'
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: true,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'Python Basics Data Types: Lists, Tuples and Sets',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2023-10-21 15:54:22'
+}</script><script>(win=>{
+      win.saveToLocal = {
+        set: (key, value, ttl) => {
+          if (ttl === 0) return
+          const now = Date.now()
+          const expiry = now + ttl * 86400000
+          const item = {
+            value,
+            expiry
+          }
+          localStorage.setItem(key, JSON.stringify(item))
+        },
+      
+        get: key => {
+          const itemStr = localStorage.getItem(key)
+      
+          if (!itemStr) {
+            return undefined
+          }
+          const item = JSON.parse(itemStr)
+          const now = Date.now()
+      
+          if (now > item.expiry) {
+            localStorage.removeItem(key)
+            return undefined
+          }
+          return item.value
+        }
+      }
+    
+      win.getScript = (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        script.onerror = reject
+        script.onload = script.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          script.onload = script.onreadystatechange = null
+          resolve()
+        }
+
+        Object.keys(attr).forEach(key => {
+          script.setAttribute(key, attr[key])
+        })
+
+        document.head.appendChild(script)
+      })
+    
+      win.getCSS = (url, id = false) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onerror = reject
+        link.onload = link.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          link.onload = link.onreadystatechange = null
+          resolve()
+        }
+        document.head.appendChild(link)
+      })
+    
+      win.activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', 'ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+        if (t === 'dark') activateDarkMode()
+        else if (t === 'light') activateLightMode()
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+      const detectApple = () => {
+        if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+          document.documentElement.classList.add('apple')
+        }
+      }
+      detectApple()
+    })(window)</script><link rel="stylesheet" href="/css/mouse-style.css"><link rel="stylesheet" href="/css/background.css"><link rel="stylesheet" href="/css/navigator-bar.css"><meta name="generator" content="Hexo 6.3.0"></head><body><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="https://i.loli.net/2021/02/24/5O1day2nriDzjSu.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">Articles</div><div class="length-num">1</div></a><a href="/tags/"><div class="headline">Tags</div><div class="length-num">3</div></a><a href="/categories/"><div class="headline">Categories</div><div class="length-num">1</div></a></div><hr class="custom-hr"/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> Categories</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> About</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg fixed" id="page-header"><nav id="nav"><span id="blog-info"><a href="/" title="Magnicord"><span class="site-name">Magnicord</span></a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> Categories</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> About</span></a></div></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">Python Basics Data Types: Lists, Tuples and Sets</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">Created</span><time class="post-meta-date-created" datetime="2023-10-21T07:49:59.000Z" title="Created 2023-10-21 15:49:59">2023-10-21</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">Updated</span><time class="post-meta-date-updated" datetime="2023-10-21T07:54:22.515Z" title="Updated 2023-10-21 15:54:22">2023-10-21</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/Python-Basics/">Python Basics</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">Word Count:</span><span class="word-count">1.7k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">Reading Time:</span><span>10mins</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="Python Basics Data Types: Lists, Tuples and Sets"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">Post Views:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><blockquote>
+<p>This note is compiled based on <a target="_blank" rel="noopener" href="https://youtu.be/W8KRzm-HUcc?si=mEvKXut50K-2oQ43">Corey Schafer’s Python Tutorial</a>.<br>
+And it mainly focuses on summarizing knowledge.</p>
+</blockquote>
+<h2 id="Lists">Lists</h2>
+<p><em>List</em> is a collection which is:</p>
+<ul>
+<li><strong>ordered</strong></li>
+<li><strong>changeable</strong></li>
+</ul>
+<h3 id="Creating-Lists">Creating Lists</h3>
+<p>We use <strong>square bracket notation</strong> to represent a list.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">empty_list = [] <span class="comment"># create an empty list</span></span><br><span class="line"></span><br><span class="line">courses = [<span class="string">&#x27;History&#x27;</span>, <span class="string">&#x27;Math&#x27;</span>, <span class="string">&#x27;Physics&#x27;</span>, <span class="string">&#x27;CompSci&#x27;</span>]</span><br><span class="line"><span class="built_in">print</span>(courses)</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[&#x27;History&#x27;, &#x27;Math&#x27;, &#x27;Physics&#x27;, &#x27;CompSci&#x27;]</span><br></pre></td></tr></table></figure>
+<p>Similar to <code>string</code>, we can use <code>len</code> to get the <strong>length</strong> of the list.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">courses = [<span class="string">&#x27;History&#x27;</span>, <span class="string">&#x27;Math&#x27;</span>, <span class="string">&#x27;Physics&#x27;</span>, <span class="string">&#x27;CompSci&#x27;</span>]</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(<span class="built_in">len</span>(courses))</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">4</span><br></pre></td></tr></table></figure>
+<h3 id="Accessing-Lists">Accessing Lists</h3>
+<p>There are two ways to access lists:</p>
+<ul>
+<li><em>Indexing</em></li>
+<li><em>Slicing</em></li>
+</ul>
+<p>Let <code>ls</code> be a list containing <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>m</mi></mrow><annotation encoding="application/x-tex">m</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal">m</span></span></span></span> elements.</p>
+<h4 id="Indexing">Indexing</h4>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">Operation</th>
+<th style="text-align:center">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center"><code>ls[i]</code></td>
+<td style="text-align:center">Access the <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>i</mi><mo>+</mo><msup><mn>1</mn><mrow><mi>t</mi><mi>h</mi></mrow></msup></mrow><annotation encoding="application/x-tex">i+1^{th}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.7429em;vertical-align:-0.0833em;"></span><span class="mord mathnormal">i</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.8491em;"></span><span class="mord"><span class="mord">1</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8491em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">t</span><span class="mord mathnormal mtight">h</span></span></span></span></span></span></span></span></span></span></span></span> element.</td>
+</tr>
+<tr>
+<td style="text-align:center"><code>ls[-i]</code></td>
+<td style="text-align:center">Access the <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>i</mi></mrow><annotation encoding="application/x-tex">i</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6595em;"></span><span class="mord mathnormal">i</span></span></span></span> to last element.</td>
+</tr>
+</tbody>
+</table>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">courses = [<span class="string">&#x27;History&#x27;</span>, <span class="string">&#x27;Math&#x27;</span>, <span class="string">&#x27;Physics&#x27;</span>, <span class="string">&#x27;CompSci&#x27;</span>]</span><br><span class="line"></span><br><span class="line"><span class="comment"># Indexing</span></span><br><span class="line"><span class="built_in">print</span>(courses[<span class="number">0</span>])</span><br><span class="line"><span class="built_in">print</span>(courses[<span class="number">3</span>])</span><br><span class="line"><span class="built_in">print</span>(courses[-<span class="number">1</span>])  <span class="comment"># negative index</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">History</span><br><span class="line">CompSci</span><br><span class="line">CompSci</span><br></pre></td></tr></table></figure>
+<h4 id="Slicing">Slicing</h4>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">Operation</th>
+<th style="text-align:center">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center"><code>ls[i:j]</code></td>
+<td style="text-align:center">Access elements in the location <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false">[</mo><mi>i</mi><mo separator="true">,</mo><mi>j</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">[i, j)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">[</span><span class="mord mathnormal">i</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal" style="margin-right:0.05724em;">j</span><span class="mclose">)</span></span></span></span>.</td>
+</tr>
+<tr>
+<td style="text-align:center"><code>ls[:j]</code></td>
+<td style="text-align:center">Access elements in the location <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false">[</mo><mn>0</mn><mo separator="true">,</mo><mi>j</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">[0, j)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">[</span><span class="mord">0</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal" style="margin-right:0.05724em;">j</span><span class="mclose">)</span></span></span></span>.</td>
+</tr>
+<tr>
+<td style="text-align:center"><code>ls[i:]</code></td>
+<td style="text-align:center">Access elements in the location <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false">[</mo><mi>i</mi><mo separator="true">,</mo><mi>m</mi><mo stretchy="false">]</mo></mrow><annotation encoding="application/x-tex">[i, m]</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">[</span><span class="mord mathnormal">i</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal">m</span><span class="mclose">]</span></span></span></span>.</td>
+</tr>
+<tr>
+<td style="text-align:center"><code>ls[:]</code></td>
+<td style="text-align:center">Access elements in the location <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false">[</mo><mn>0</mn><mo separator="true">,</mo><mi>m</mi><mo stretchy="false">]</mo></mrow><annotation encoding="application/x-tex">[0, m]</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">[</span><span class="mord">0</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal">m</span><span class="mclose">]</span></span></span></span>.</td>
+</tr>
+</tbody>
+</table>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">courses = [<span class="string">&#x27;History&#x27;</span>, <span class="string">&#x27;Math&#x27;</span>, <span class="string">&#x27;Physics&#x27;</span>, <span class="string">&#x27;CompSci&#x27;</span>]</span><br><span class="line"></span><br><span class="line"><span class="comment"># Slicing</span></span><br><span class="line"><span class="built_in">print</span>(courses[<span class="number">1</span>:<span class="number">3</span>])</span><br><span class="line"><span class="built_in">print</span>(courses[:<span class="number">2</span>])</span><br><span class="line"><span class="built_in">print</span>(courses[<span class="number">2</span>:])</span><br><span class="line"><span class="built_in">print</span>(courses[:])</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">[&#x27;Math&#x27;, &#x27;Physics&#x27;]</span><br><span class="line">[&#x27;History&#x27;, &#x27;Math&#x27;]</span><br><span class="line">[&#x27;Physics&#x27;, &#x27;CompSci&#x27;]</span><br><span class="line">[&#x27;History&#x27;, &#x27;Math&#x27;, &#x27;Physics&#x27;, &#x27;CompSci&#x27;]</span><br></pre></td></tr></table></figure>
+<h3 id="Modifying-Lists">Modifying Lists</h3>
+<h4 id="Adding-Elements-to-Lists">Adding Elements to Lists</h4>
+<p>There are some ways to add elements to lists:</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">Method</th>
+<th style="text-align:center">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center"><code>append</code></td>
+<td style="text-align:center">Add a <strong>single</strong> element to the <strong>end</strong>.</td>
+</tr>
+<tr>
+<td style="text-align:center"><code>insert</code></td>
+<td style="text-align:center">Add a <strong>single</strong> element to the <strong>specific location</strong>.</td>
+</tr>
+<tr>
+<td style="text-align:center"><code>extend</code></td>
+<td style="text-align:center">Add <strong>multiple</strong> elements to the <strong>end</strong>.</td>
+</tr>
+</tbody>
+</table>
+<p>Firstly, we add <code>'Art'</code> to our <code>courses</code>.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">courses = [<span class="string">&#x27;History&#x27;</span>, <span class="string">&#x27;Math&#x27;</span>, <span class="string">&#x27;Physics&#x27;</span>, <span class="string">&#x27;CompSci&#x27;</span>]</span><br><span class="line">courses.append(<span class="string">&#x27;Art&#x27;</span>)</span><br><span class="line"><span class="built_in">print</span>(courses)</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[&#x27;History&#x27;, &#x27;Math&#x27;, &#x27;Physics&#x27;, &#x27;CompSci&#x27;, &#x27;Art&#x27;]</span><br></pre></td></tr></table></figure>
+<p>We can also insert <code>'Art'</code> to the top (i.e. the first position) of <code>courses</code>.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">courses = [<span class="string">&#x27;History&#x27;</span>, <span class="string">&#x27;Math&#x27;</span>, <span class="string">&#x27;Physics&#x27;</span>, <span class="string">&#x27;CompSci&#x27;</span>]</span><br><span class="line">courses.insert(<span class="number">0</span>, <span class="string">&#x27;Art&#x27;</span>)</span><br><span class="line"><span class="built_in">print</span>(courses)</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[&#x27;Art&#x27;, &#x27;History&#x27;, &#x27;Math&#x27;, &#x27;Physics&#x27;, &#x27;CompSci&#x27;]</span><br></pre></td></tr></table></figure>
+<p>Finally, we want to add a list of courses (e.g. <code>'Art'</code> <code>'Education'</code>) to our <code>courses</code> list.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">courses = [<span class="string">&#x27;History&#x27;</span>, <span class="string">&#x27;Math&#x27;</span>, <span class="string">&#x27;Physics&#x27;</span>, <span class="string">&#x27;CompSci&#x27;</span>]</span><br><span class="line">courses_2 = [<span class="string">&#x27;Art&#x27;</span>, <span class="string">&#x27;Education&#x27;</span>]</span><br><span class="line">courses.extend(courses_2)</span><br><span class="line"><span class="built_in">print</span>(courses)</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[&#x27;History&#x27;, &#x27;Math&#x27;, &#x27;Physics&#x27;, &#x27;CompSci&#x27;, &#x27;Art&#x27;, &#x27;Education&#x27;]</span><br></pre></td></tr></table></figure>
+<h4 id="Removing-Elements-From-Lists">Removing Elements From Lists</h4>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">Method</th>
+<th style="text-align:center">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center"><code>remove</code></td>
+<td style="text-align:center">Remove a specific element.</td>
+</tr>
+<tr>
+<td style="text-align:center"><code>pop</code></td>
+<td style="text-align:center">Remove the <strong>last</strong> element and <strong>return</strong> it.</td>
+</tr>
+</tbody>
+</table>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">courses = [<span class="string">&#x27;History&#x27;</span>, <span class="string">&#x27;Math&#x27;</span>, <span class="string">&#x27;Physics&#x27;</span>, <span class="string">&#x27;CompSci&#x27;</span>]</span><br><span class="line"></span><br><span class="line">courses.remove(<span class="string">&#x27;Math&#x27;</span>)</span><br><span class="line"><span class="built_in">print</span>(courses)</span><br><span class="line"></span><br><span class="line">popped = courses.pop()  <span class="comment"># last value</span></span><br><span class="line"><span class="built_in">print</span>(courses)</span><br><span class="line"><span class="built_in">print</span>(popped)</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[&#x27;History&#x27;, &#x27;Physics&#x27;, &#x27;CompSci&#x27;]</span><br><span class="line">[&#x27;History&#x27;, &#x27;Physics&#x27;]</span><br><span class="line">CompSci</span><br></pre></td></tr></table></figure>
+<p>With <code>pop</code> method, the <code>list</code> can be used as a <em>stack</em> or a <em>queue</em>.</p>
+<h4 id="Reversing-Lists">Reversing Lists</h4>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">courses = [<span class="string">&#x27;History&#x27;</span>, <span class="string">&#x27;Math&#x27;</span>, <span class="string">&#x27;Physics&#x27;</span>, <span class="string">&#x27;CompSci&#x27;</span>]</span><br><span class="line">courses.reverse()</span><br><span class="line"><span class="built_in">print</span>(courses)</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[&#x27;CompSci&#x27;, &#x27;Physics&#x27;, &#x27;Math&#x27;, &#x27;History&#x27;]</span><br></pre></td></tr></table></figure>
+<h3 id="Sorting-Lists">Sorting Lists</h3>
+<h4 id="Using-sort-Method">Using <code>sort</code> Method</h4>
+<p>We can sort our <code>courses</code> in <strong>alphabetical order</strong>.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">courses = [<span class="string">&#x27;History&#x27;</span>, <span class="string">&#x27;Math&#x27;</span>, <span class="string">&#x27;Physics&#x27;</span>, <span class="string">&#x27;CompSci&#x27;</span>]</span><br><span class="line">courses.sort()  <span class="comment"># in alphabetical order</span></span><br><span class="line"><span class="built_in">print</span>(courses)</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[&#x27;CompSci&#x27;, &#x27;History&#x27;, &#x27;Math&#x27;, &#x27;Physics&#x27;]</span><br></pre></td></tr></table></figure>
+<p>And we can sort a list of <strong>integers</strong> in <strong>ascending order</strong>.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">nums = [<span class="number">1</span>, <span class="number">5</span>, <span class="number">2</span>, <span class="number">4</span>, <span class="number">3</span>]</span><br><span class="line">nums.sort()</span><br><span class="line"><span class="built_in">print</span>(nums)  <span class="comment"># in ascending order</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[1, 2, 3, 4, 5]</span><br></pre></td></tr></table></figure>
+<p>Or we can add parameter values <code>reverse=True</code> to the <code>sort</code> method to sort <code>nums</code> in <strong>descending order</strong>.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">nums = [<span class="number">1</span>, <span class="number">5</span>, <span class="number">2</span>, <span class="number">4</span>, <span class="number">3</span>]</span><br><span class="line">nums.sort(reverse=<span class="literal">True</span>)</span><br><span class="line"><span class="built_in">print</span>(nums)  <span class="comment"># in descending order</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[5, 4, 3, 2, 1]</span><br></pre></td></tr></table></figure>
+<h4 id="Using-sorted-Function">Using <code>sorted</code> Function</h4>
+<p>In addition to use <code>sort</code> method in <code>list</code>, we can use <code>sorted</code> function. The difference is that <code>sorted</code> will <strong>return a new object</strong>.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">courses = [<span class="string">&#x27;History&#x27;</span>, <span class="string">&#x27;Math&#x27;</span>, <span class="string">&#x27;Physics&#x27;</span>, <span class="string">&#x27;CompSci&#x27;</span>]</span><br><span class="line">sorted_courses = <span class="built_in">sorted</span>(courses)</span><br><span class="line"><span class="built_in">print</span>(sorted_courses)</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[&#x27;CompSci&#x27;, &#x27;History&#x27;, &#x27;Math&#x27;, &#x27;Physics&#x27;]</span><br></pre></td></tr></table></figure>
+<h3 id="Finding-Values-in-Lists">Finding Values in Lists</h3>
+<h4 id="min-max-and-sum"><code>min</code>, <code>max</code> and <code>sum</code></h4>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">Function</th>
+<th style="text-align:center">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center"><code>min</code></td>
+<td style="text-align:center">Find the <strong>minimum</strong> element.</td>
+</tr>
+<tr>
+<td style="text-align:center"><code>max</code></td>
+<td style="text-align:center">Find the <strong>maximum</strong> element.</td>
+</tr>
+<tr>
+<td style="text-align:center"><code>sum</code></td>
+<td style="text-align:center">Return the <strong>sum</strong> of all the elements.</td>
+</tr>
+</tbody>
+</table>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">nums = [<span class="number">1</span>, <span class="number">5</span>, <span class="number">2</span>, <span class="number">4</span>, <span class="number">3</span>]</span><br><span class="line"><span class="built_in">print</span>(<span class="built_in">min</span>(nums))</span><br><span class="line"><span class="built_in">print</span>(<span class="built_in">max</span>(nums))</span><br><span class="line"><span class="built_in">print</span>(<span class="built_in">sum</span>(nums))</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">1</span><br><span class="line">5</span><br><span class="line">15</span><br></pre></td></tr></table></figure>
+<h3 id="Traversing-Lists">Traversing Lists</h3>
+<h4 id="Finding-Indices">Finding Indices</h4>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">courses = [<span class="string">&#x27;History&#x27;</span>, <span class="string">&#x27;Math&#x27;</span>, <span class="string">&#x27;Physics&#x27;</span>, <span class="string">&#x27;CompSci&#x27;</span>]</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&#x27;Math&#x27;</span> <span class="keyword">in</span> courses)</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">True</span><br></pre></td></tr></table></figure>
+<p><code>in</code> is useful in <em>traversing</em>.</p>
+<p>In addition to <code>in</code>, we can use <code>index</code> method.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">courses = [<span class="string">&#x27;History&#x27;</span>, <span class="string">&#x27;Math&#x27;</span>, <span class="string">&#x27;Physics&#x27;</span>, <span class="string">&#x27;CompSci&#x27;</span>]</span><br><span class="line"><span class="built_in">print</span>(courses.index(<span class="string">&#x27;CompSci&#x27;</span>))</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">3</span><br></pre></td></tr></table></figure>
+<p>If the value we want to find is not in list, <code>ValueError</code> will occur.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">courses = [<span class="string">&#x27;History&#x27;</span>, <span class="string">&#x27;Math&#x27;</span>, <span class="string">&#x27;Physics&#x27;</span>, <span class="string">&#x27;CompSci&#x27;</span>]</span><br><span class="line"><span class="built_in">print</span>(courses.index(<span class="string">&#x27;Art&#x27;</span>))</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">print(courses.index(&#x27;Art&#x27;))</span><br><span class="line">      ^^^^^^^^^^^^^^^^^^^^</span><br><span class="line">ValueError: &#x27;Art&#x27; is not in list</span><br></pre></td></tr></table></figure>
+<h4 id="For-Loops"><code>For</code> Loops</h4>
+<p>The general syntax is: <code>for &lt;item&gt; in &lt;list&gt;:</code>.</p>
+<p>We can find values only.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">courses = [<span class="string">&#x27;History&#x27;</span>, <span class="string">&#x27;Math&#x27;</span>, <span class="string">&#x27;Physics&#x27;</span>, <span class="string">&#x27;CompSci&#x27;</span>]</span><br><span class="line"><span class="keyword">for</span> course <span class="keyword">in</span> courses:</span><br><span class="line">    <span class="built_in">print</span>(course)</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">History</span><br><span class="line">Math</span><br><span class="line">Physics</span><br><span class="line">CompSci</span><br></pre></td></tr></table></figure>
+<p>We can find indices and values using <code>enumerate</code>.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">courses = [<span class="string">&#x27;History&#x27;</span>, <span class="string">&#x27;Math&#x27;</span>, <span class="string">&#x27;Physics&#x27;</span>, <span class="string">&#x27;CompSci&#x27;</span>]</span><br><span class="line"><span class="keyword">for</span> course <span class="keyword">in</span> <span class="built_in">enumerate</span>(courses):</span><br><span class="line">    <span class="built_in">print</span>(course)</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">(0, &#x27;History&#x27;)</span><br><span class="line">(1, &#x27;Math&#x27;)</span><br><span class="line">(2, &#x27;Physics&#x27;)</span><br><span class="line">(3, &#x27;CompSci&#x27;)</span><br></pre></td></tr></table></figure>
+<p>With <code>enumerate</code>, we can <strong>set the starting index</strong>.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">courses = [<span class="string">&#x27;History&#x27;</span>, <span class="string">&#x27;Math&#x27;</span>, <span class="string">&#x27;Physics&#x27;</span>, <span class="string">&#x27;CompSci&#x27;</span>]</span><br><span class="line"><span class="keyword">for</span> course <span class="keyword">in</span> <span class="built_in">enumerate</span>(courses, start=<span class="number">1</span>):</span><br><span class="line">    <span class="built_in">print</span>(course)</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">(1, &#x27;History&#x27;)</span><br><span class="line">(2, &#x27;Math&#x27;)</span><br><span class="line">(3, &#x27;Physics&#x27;)</span><br><span class="line">(4, &#x27;CompSci&#x27;)</span><br></pre></td></tr></table></figure>
+<h3 id="Conversing-Between-Lists-and-Strings">Conversing Between Lists and Strings</h3>
+<p>For example, we want to turn <code>courses</code> into comma-separated <code>string</code>.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">courses = [<span class="string">&#x27;History&#x27;</span>, <span class="string">&#x27;Math&#x27;</span>, <span class="string">&#x27;Physics&#x27;</span>, <span class="string">&#x27;CompSci&#x27;</span>]</span><br><span class="line">course_str = <span class="string">&#x27;, &#x27;</span>.join(courses)</span><br><span class="line"><span class="built_in">print</span>(course_str)</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">History, Math, Physics, CompSci</span><br></pre></td></tr></table></figure>
+<p>Now we want to turn it back.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">courses = [<span class="string">&#x27;History&#x27;</span>, <span class="string">&#x27;Math&#x27;</span>, <span class="string">&#x27;Physics&#x27;</span>, <span class="string">&#x27;CompSci&#x27;</span>]</span><br><span class="line">course_str = <span class="string">&#x27;, &#x27;</span>.join(courses)</span><br><span class="line"></span><br><span class="line">new_list = course_str.split(<span class="string">&#x27;, &#x27;</span>)</span><br><span class="line"><span class="built_in">print</span>(new_list)</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[&#x27;History&#x27;, &#x27;Math&#x27;, &#x27;Physics&#x27;, &#x27;CompSci&#x27;]</span><br></pre></td></tr></table></figure>
+<h2 id="Tuples">Tuples</h2>
+<p><em>Tuple</em> is a collection which is:</p>
+<ul>
+<li><strong>ordered</strong></li>
+<li><strong>unchangeable</strong></li>
+</ul>
+<h3 id="Creating-Tuples">Creating Tuples</h3>
+<p>We use <strong>parenthesis notation</strong> to represent a tuple.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">empty_tuple = () <span class="comment"># create an empty tuple</span></span><br><span class="line"></span><br><span class="line">courses = (<span class="string">&#x27;History&#x27;</span>, <span class="string">&#x27;Math&#x27;</span>, <span class="string">&#x27;Physics&#x27;</span>, <span class="string">&#x27;CompSci&#x27;</span>)</span><br><span class="line"><span class="built_in">print</span>(courses)</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">(&#x27;History&#x27;, &#x27;Math&#x27;, &#x27;Physics&#x27;, &#x27;CompSci&#x27;)</span><br></pre></td></tr></table></figure>
+<h3 id="Mutable-and-Immutable">Mutable and Immutable</h3>
+<p>Lists and tuples have <strong>most methods in common</strong>.</p>
+<p>The significant difference between <code>list</code> and <code>tuple</code> is <em>mutability</em>.</p>
+<ul>
+<li><code>list</code>: <strong>Mutable</strong></li>
+<li><code>tuple</code>: <strong>Immutable</strong></li>
+</ul>
+<p>We use an example of <code>list</code> and <code>tuple</code> modifying elements to interpret <em>mutability</em>.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Mutable</span></span><br><span class="line">list_1 = [<span class="string">&#x27;History&#x27;</span>, <span class="string">&#x27;Math&#x27;</span>, <span class="string">&#x27;Physics&#x27;</span>, <span class="string">&#x27;CompSci&#x27;</span>]</span><br><span class="line">list_2 = list_1</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(list_1)</span><br><span class="line"><span class="built_in">print</span>(list_2)</span><br><span class="line"></span><br><span class="line"><span class="comment"># Modify the list</span></span><br><span class="line">list_1[<span class="number">0</span>] = <span class="string">&#x27;Art&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Both value are modified</span></span><br><span class="line"><span class="built_in">print</span>(list_1)</span><br><span class="line"><span class="built_in">print</span>(list_2)</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">[&#x27;History&#x27;, &#x27;Math&#x27;, &#x27;Physics&#x27;, &#x27;CompSci&#x27;]</span><br><span class="line">[&#x27;History&#x27;, &#x27;Math&#x27;, &#x27;Physics&#x27;, &#x27;CompSci&#x27;]</span><br><span class="line">[&#x27;Art&#x27;, &#x27;Math&#x27;, &#x27;Physics&#x27;, &#x27;CompSci&#x27;]</span><br><span class="line">[&#x27;Art&#x27;, &#x27;Math&#x27;, &#x27;Physics&#x27;, &#x27;CompSci&#x27;]</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Immutable</span></span><br><span class="line">tuple_1 = (<span class="string">&#x27;History&#x27;</span>, <span class="string">&#x27;Math&#x27;</span>, <span class="string">&#x27;Physics&#x27;</span>, <span class="string">&#x27;CompSci&#x27;</span>)</span><br><span class="line">tuple_2 = tuple_1</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(tuple_1)</span><br><span class="line"><span class="built_in">print</span>(tuple_2)</span><br><span class="line"></span><br><span class="line"><span class="comment"># Modify the tuple</span></span><br><span class="line"><span class="comment"># Error</span></span><br><span class="line">tuple_1[<span class="number">0</span>] = <span class="string">&#x27;Art&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(tuple_1)</span><br><span class="line"><span class="built_in">print</span>(tuple_2)</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">tuple_1[0] = &#x27;Art&#x27;</span><br><span class="line">~~~~~~~^^^</span><br><span class="line">TypeError: &#x27;tuple&#x27; object does not support item assignment</span><br></pre></td></tr></table></figure>
+<h2 id="Sets">Sets</h2>
+<p><em>Set</em> is a collection which is:</p>
+<ul>
+<li><strong>unordered</strong></li>
+<li><strong>unchangeable</strong></li>
+</ul>
+<p>Especially, sets allow <strong>no duplicates</strong>.</p>
+<h3 id="Creating-Sets">Creating Sets</h3>
+<p>We use <strong>curly bracket notation</strong> to represent a tuple.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cs_courses = &#123;<span class="string">&#x27;History&#x27;</span>, <span class="string">&#x27;Math&#x27;</span>, <span class="string">&#x27;Physics&#x27;</span>, <span class="string">&#x27;CompSci&#x27;</span>&#125;</span><br><span class="line"><span class="built_in">print</span>(cs_courses)</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123;&#x27;History&#x27;, &#x27;CompSci&#x27;, &#x27;Math&#x27;, &#x27;Physics&#x27;&#125;</span><br></pre></td></tr></table></figure>
+<p>The result of <code>print</code> <strong>changes</strong> with every execution due to sets’ <strong>unordered</strong> feature.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cs_courses = &#123;<span class="string">&#x27;History&#x27;</span>, <span class="string">&#x27;Math&#x27;</span>, <span class="string">&#x27;Physics&#x27;</span>, <span class="string">&#x27;CompSci&#x27;</span>&#125;</span><br><span class="line"><span class="built_in">print</span>(cs_courses)</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123;&#x27;Math&#x27;, &#x27;Physics&#x27;, &#x27;CompSci&#x27;, &#x27;History&#x27;&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="Allowing-No-Duplicates">Allowing No Duplicates</h3>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cs_courses = &#123;<span class="string">&#x27;History&#x27;</span>, <span class="string">&#x27;Math&#x27;</span>, <span class="string">&#x27;Physics&#x27;</span>, <span class="string">&#x27;CompSci&#x27;</span>, <span class="string">&#x27;CompSci&#x27;</span>, <span class="string">&#x27;Math&#x27;</span>&#125;</span><br><span class="line"><span class="built_in">print</span>(cs_courses)</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123;&#x27;History&#x27;, &#x27;Math&#x27;, &#x27;Physics&#x27;, &#x27;CompSci&#x27;&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="Sets-Operation">Sets Operation</h3>
+<table>
+<thead>
+<tr>
+<th>Operation</th>
+<th>Notation</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>intersection</code></td>
+<td><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>A</mi><mo>∩</mo><mi>B</mi></mrow><annotation encoding="application/x-tex">A\cap B</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal">A</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">∩</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.05017em;">B</span></span></span></span></td>
+<td>Find elements in both set <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>A</mi></mrow><annotation encoding="application/x-tex">A</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal">A</span></span></span></span> and <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>B</mi></mrow><annotation encoding="application/x-tex">B</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.05017em;">B</span></span></span></span>.</td>
+</tr>
+<tr>
+<td><code>union</code></td>
+<td><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>A</mi><mo>∪</mo><mi>B</mi></mrow><annotation encoding="application/x-tex">A\cup B</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal">A</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">∪</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.05017em;">B</span></span></span></span></td>
+<td>Combine set <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>A</mi></mrow><annotation encoding="application/x-tex">A</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal">A</span></span></span></span> and <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>B</mi></mrow><annotation encoding="application/x-tex">B</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.05017em;">B</span></span></span></span>.</td>
+</tr>
+<tr>
+<td><code>difference</code></td>
+<td><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>A</mi><mo>∖</mo><mi>B</mi></mrow><annotation encoding="application/x-tex">A\setminus B</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal">A</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">∖</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.05017em;">B</span></span></span></span></td>
+<td>Find elements in set <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>A</mi></mrow><annotation encoding="application/x-tex">A</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal">A</span></span></span></span> and not in set <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>B</mi></mrow><annotation encoding="application/x-tex">B</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.05017em;">B</span></span></span></span>.</td>
+</tr>
+</tbody>
+</table>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">cs_courses = &#123;<span class="string">&#x27;History&#x27;</span>, <span class="string">&#x27;Math&#x27;</span>, <span class="string">&#x27;Physics&#x27;</span>, <span class="string">&#x27;CompSci&#x27;</span>&#125;</span><br><span class="line">art_courses = &#123;<span class="string">&#x27;History&#x27;</span>, <span class="string">&#x27;Math&#x27;</span>, <span class="string">&#x27;Art&#x27;</span>, <span class="string">&#x27;Design&#x27;</span>&#125;</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(cs_courses.intersection(art_courses))</span><br><span class="line"><span class="built_in">print</span>(cs_courses.union(art_courses))</span><br><span class="line"><span class="built_in">print</span>(cs_courses.difference(art_courses))</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&#123;&#x27;Math&#x27;, &#x27;History&#x27;&#125;</span><br><span class="line">&#123;&#x27;Math&#x27;, &#x27;Physics&#x27;, &#x27;Art&#x27;, &#x27;History&#x27;, &#x27;CompSci&#x27;, &#x27;Design&#x27;&#125;</span><br><span class="line">&#123;&#x27;Physics&#x27;, &#x27;CompSci&#x27;&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="Creating-Empty-Lists-Tuples-and-Sets">Creating Empty Lists, Tuples and Sets</h2>
+<p>We can use <em>constructor</em> to create lists, tuples and sets.</p>
+<p>For sets, we can only use constructor (i.e. <code>set()</code>) to create an empty one.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Empty lists</span></span><br><span class="line">empty_list = []</span><br><span class="line">empty_list = <span class="built_in">list</span>()   <span class="comment"># list constructor</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Empty Tuples</span></span><br><span class="line">empty_tuple = ()</span><br><span class="line">empty_tuple = <span class="built_in">tuple</span>() <span class="comment"># tuple constructor</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Empty Sets</span></span><br><span class="line">empty_set = &#123;&#125;        <span class="comment"># create a dict</span></span><br><span class="line">empty_set = <span class="built_in">set</span>()     <span class="comment"># set constructor</span></span><br></pre></td></tr></table></figure>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>Author: </span><span class="post-copyright-info"><a href="https://magnicord.github.io">Magnicord</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>Link: </span><span class="post-copyright-info"><a href="https://magnicord.github.io/posts/undefined.html">https://magnicord.github.io/posts/undefined.html</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>Copyright Notice: </span><span class="post-copyright-info">All articles in this blog are licensed under <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> unless stating additionally.</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/notes/">notes</a><a class="post-meta__tags" href="/tags/Python/">Python</a><a class="post-meta__tags" href="/tags/data-structure/">data structure</a></div><div class="post_share"><div class="social-share" data-image="https://i.loli.net/2021/02/24/5O1day2nriDzjSu.png" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"></nav></div><div class="aside-content" id="aside-content"><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>Contents</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Lists"><span class="toc-number">1.</span> <span class="toc-text">Lists</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Creating-Lists"><span class="toc-number">1.1.</span> <span class="toc-text">Creating Lists</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Accessing-Lists"><span class="toc-number">1.2.</span> <span class="toc-text">Accessing Lists</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Indexing"><span class="toc-number">1.2.1.</span> <span class="toc-text">Indexing</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Slicing"><span class="toc-number">1.2.2.</span> <span class="toc-text">Slicing</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Modifying-Lists"><span class="toc-number">1.3.</span> <span class="toc-text">Modifying Lists</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Adding-Elements-to-Lists"><span class="toc-number">1.3.1.</span> <span class="toc-text">Adding Elements to Lists</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Removing-Elements-From-Lists"><span class="toc-number">1.3.2.</span> <span class="toc-text">Removing Elements From Lists</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Reversing-Lists"><span class="toc-number">1.3.3.</span> <span class="toc-text">Reversing Lists</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Sorting-Lists"><span class="toc-number">1.4.</span> <span class="toc-text">Sorting Lists</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Using-sort-Method"><span class="toc-number">1.4.1.</span> <span class="toc-text">Using sort Method</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Using-sorted-Function"><span class="toc-number">1.4.2.</span> <span class="toc-text">Using sorted Function</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Finding-Values-in-Lists"><span class="toc-number">1.5.</span> <span class="toc-text">Finding Values in Lists</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#min-max-and-sum"><span class="toc-number">1.5.1.</span> <span class="toc-text">min, max and sum</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Traversing-Lists"><span class="toc-number">1.6.</span> <span class="toc-text">Traversing Lists</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Finding-Indices"><span class="toc-number">1.6.1.</span> <span class="toc-text">Finding Indices</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#For-Loops"><span class="toc-number">1.6.2.</span> <span class="toc-text">For Loops</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Conversing-Between-Lists-and-Strings"><span class="toc-number">1.7.</span> <span class="toc-text">Conversing Between Lists and Strings</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Tuples"><span class="toc-number">2.</span> <span class="toc-text">Tuples</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Creating-Tuples"><span class="toc-number">2.1.</span> <span class="toc-text">Creating Tuples</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Mutable-and-Immutable"><span class="toc-number">2.2.</span> <span class="toc-text">Mutable and Immutable</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Sets"><span class="toc-number">3.</span> <span class="toc-text">Sets</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Creating-Sets"><span class="toc-number">3.1.</span> <span class="toc-text">Creating Sets</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Allowing-No-Duplicates"><span class="toc-number">3.2.</span> <span class="toc-text">Allowing No Duplicates</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Sets-Operation"><span class="toc-number">3.3.</span> <span class="toc-text">Sets Operation</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Creating-Empty-Lists-Tuples-and-Sets"><span class="toc-number">4.</span> <span class="toc-text">Creating Empty Lists, Tuples and Sets</span></a></li></ol></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2023 By Magnicord</div><div class="framework-info"><span>Framework </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>Theme </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div><div class="footer_custom_text">Welcome to the Journey of Deep Learning </div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="Read Mode"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="Toggle Between Light And Dark Mode"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="Toggle between Single-column and Double-column"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="Setting"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="Table Of Contents"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="Back To Top"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox/fancybox.umd.min.js"></script><div class="js-pjax"></div><script id="click-heart" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/dist/click-heart.min.js" async="async" mobile="true"></script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
